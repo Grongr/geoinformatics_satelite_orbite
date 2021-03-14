@@ -3,12 +3,15 @@
 # All we need is blood. Or some python libraries
 import math
 
+# LK coords
+lk_lat, lk_long, lk_alt = 55.93022492722837, 37.51801413817416, 0.18
+
 # I love stackoverflow :)
 def get_coord_in_ecef(xyz):
     from astropy import coordinates as coord
     from astropy import units as u
     from astropy.time import Time
-    now = Time('2021-03-15 00:36:00')
+    now = Time('2021-03-15 01:08:00')
     # position of satellite in GCRS or J20000 ECI:
     cartrep = coord.CartesianRepresentation(*xyz, unit=u.m)
     gcrs = coord.GCRS(cartrep, obstime=now)
