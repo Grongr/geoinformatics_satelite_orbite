@@ -62,5 +62,3 @@ l = get_coords_in_eci()
 l = get_coord_in_ecef(l)
 
 print(l)
-
-
