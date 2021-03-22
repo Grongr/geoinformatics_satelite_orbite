@@ -3,15 +3,14 @@
 # All we need is blood. Or some python libraries
 import math
 
-# LK coords
-lk_lat, lk_long, lk_alt = 55.93022492722837, 37.51801413817416, 0.18
+TIME = '2021-03-15 00:00:00'
 
 # I love stackoverflow :)
 def get_coord_in_ecef(xyz):
     from astropy import coordinates as coord
     from astropy import units as u
     from astropy.time import Time
-    now = Time('2021-03-15 01:08:00')
+    now = Time(TIME)
     # position of satellite in GCRS or J20000 ECI:
     cartrep = coord.CartesianRepresentation(*xyz, unit=u.m)
     gcrs = coord.GCRS(cartrep, obstime=now)
@@ -57,8 +56,15 @@ def get_coords_in_eci():
     
     return [x, y, z]
 
-l = get_coords_in_eci()
+# LK coords
+lk_lat, lk_long, lk_alt = 55.93022492722837, 37.51801413817416, 0.18
 
+# How we get coords of noaa19 in TIME moment of time
+l = get_coords_in_eci()
 l = get_coord_in_ecef(l)
 
-print(l)
+
+
+noaa_lat, noaa_long, noaa_alt = 62.23144269, 173.76045355, -6336563.53468379
+
+print(str(noaa_lat) + " " + str(noaa_long) + " " + str(noaa_alt))
